@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends "first_app/base.html" %}
+{% block body-block %}
+<head>
+  <style>
+*{
+    margin: 0;
+    padding: 0;
+}
+  
+.text-box{
+    font-size: 70px;
+    font-family: sans-serif;
+    position: absolute;
+    top:40%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+}
+span{
+    animation: mover 2s linear infinite;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+@keyframes mover
+{
+    0%{
+        text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+      }
+    50%{
+        text-shadow: 0 0 30px rgba(0, 0, 0, 0.30);
+        transform: translateY(30px);
+      }
+    100%
+      {
+        text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+      }
+}
+span:nth-child(1)
+{
+    animation-delay: 0.5s;
+}
+span:nth-child(2)
+{
+    animation-delay: 1s;
+}
+span:nth-child(3)
+{
+    animation-delay: 1.5s;
+}
+span:nth-child(4)
+{
+    animation-delay: 2s;
+}
+span:nth-child(5)
+{
+    animation-delay: 2.5s;
+}
+span:nth-child(6)
+{
+    animation-delay: 3s;
+}
+span:nth-child(7)
+{
+    animation-delay: 3.5s;
+}
+
+div{
+  text-align: center;
+}
+</style>
+</head>
+<html>
+<head>  
+<title>Animated Text</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body background="https://wallpaperaccess.com/full/2964938.jpg">
+    
+    
+    <div class="text-box">
+    <span>WELCOME</span>
+    <span>TO</span>
+    <span>LIBRARY</span>
+    <span>FINE</span>
+    <span>PROJECT</span>
+    </div>
+</body>
+</html>
+{% endblock %}
