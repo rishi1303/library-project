@@ -47,3 +47,11 @@ def user_login(request):
     else:
         return render(request, 'first_app/login.html')
 
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+@login_required
+def special(request):
+    return HttpResponse("You are logged in")
