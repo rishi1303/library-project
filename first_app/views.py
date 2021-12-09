@@ -26,3 +26,32 @@ def register(request):
         user_form = Userform()
     return render(request,'first_app/registration.html',{'user_form':user_form,
                                                          'registered':registered})
+
+def user_login(request):
+    if request.method == "POST":
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user = authenticate(username=username,password=password)
+        if user:
+            if user.is_active:
+                login(request,user)
+                fines=Fine.objects.all()
+                args={'fines':fines}
+                return render(request, 'first_app/fine.html',args)
+            else:
+                return HttpResponse("Account not active")
+        else:
+            print("Someone tried to login and failed")
+            print("Username{} and password{}".format(username,password))
+            return HttpResponse("Invalid login details")
+    else:
+        return render(request, 'first_app/login.html')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+@login_required
+def special(request):
+    return HttpResponse("You are logged in")
