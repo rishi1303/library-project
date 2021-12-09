@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username}}</title>
+    <style >
+		table,th,td{
+			border: 3px solid black;
+		}
+		td{
+			text-align: center;
+		}
+		table{
+			border-collapse: collapse;
+		}
+	</style>
+
+</head>
+<body>
+    <h1>Welcome {{ user.username }} to your library books dashboard </h1>
+    <table style="width:100%">
+        <tr>
+            <!-- <th><h2>S No.</h2></th> -->
+            <th><h2>Book Name</h2></th>
+            <th><h2>Book_id</h2></th>
+            <th><h2>Issue Date</h2></th>
+            <th><h2>Due Date</h2></th>
+            <th><h2>Fine</h2></th>
+        </tr>
+        {% for fine in fines %}
+            {% ifequal fine.user_name.username user.username %}
+                <tr>
+                    <!-- <td>{{ fine.id }}</td> -->
+                    <td>{{ fine.book }}</td>
+                    <td>{{ fine.book_id }}</td>
+                    <td>{{ fine.issue_date }}</td>
+                    <td>{{ fine.tplus }}</td>
+                    <td>{{ fine.total }} Rs.</td>
+                </tr>
+            {% endifequal %}
+        {% endfor %}
+    </table>
+
+</body>
+</html>
